@@ -7,9 +7,12 @@ import { applicationsData } from 'src/shared/const/testApplicationsData'
 // }
 
 const Dashboard: React.FC = () => {
-	return <div className={cls.Dashboard}>DASHBOARD 
-    <ApplicationsTable applications={applicationsData} />
-    </div>
+	return (
+		<div className={cls.Dashboard}>
+			DASHBOARD
+			<ApplicationsTable applications={applicationsData} />
+		</div>
+	)
 }
 
 export default Dashboard

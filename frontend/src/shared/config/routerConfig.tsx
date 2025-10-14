@@ -7,14 +7,14 @@ import type { RouteProps } from 'react-router'
 
 export enum AppRoutes {
 	MAIN = 'main',
-  DASHBOARD = 'dashboard',
+	DASHBOARD = 'dashboard',
 	APPLICATION = 'application',
 	NOT_FOUND = 'not_found',
 }
 
 export const RouterPath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
-  [AppRoutes.DASHBOARD]: '/dashboard',
+	[AppRoutes.DASHBOARD]: '/dashboard',
 	[AppRoutes.APPLICATION]: '/application',
 
 	[AppRoutes.NOT_FOUND]: '*',
@@ -25,10 +25,10 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
 		path: RouterPath.main,
 		element: <MainPage />,
 	},
-  [AppRoutes.DASHBOARD]: {
-    path: RouterPath.dashboard,
-    element: <Dashboard />,
-  },
+	[AppRoutes.DASHBOARD]: {
+		path: RouterPath.dashboard,
+		element: <Dashboard />,
+	},
 
 	[AppRoutes.APPLICATION]: {
 		path: RouterPath.application,
