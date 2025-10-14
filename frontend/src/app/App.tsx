@@ -1,11 +1,7 @@
 import { AppRouter } from 'src/providers/router'
 
 function App() {
-	return (
-		<div>
-			<AppRouter />
-		</div>
-	)
+	return <AppRouter />
 }
 
 export default App
