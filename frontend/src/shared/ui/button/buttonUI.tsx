@@ -27,6 +27,7 @@ export const ButtonUI: FC<ButtonUIProps> = ({
 				maxWidth: 235,
 				width: '100%',
 				height: 48,
+				marginTop:68,
 				...style,
 			}}
 			onClick={onClick}

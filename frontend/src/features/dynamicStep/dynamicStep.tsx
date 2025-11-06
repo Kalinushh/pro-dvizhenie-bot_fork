@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { Stack, Title, Text, Group, Textarea } from '@mantine/core'
+import { Stack, Title, Text, Group } from '@mantine/core'
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux'
 import {
 	selectStep,
@@ -26,7 +26,7 @@ import {
 	getQuestionText as getQText,
 	NEED_CONSULTING_OPTIONS,
 } from '../../features/dynamicStep/helpers'
-
+import { TextAreaUI } from '../../shared/ui/textarea/textAreaUI'
 const isFileMultiQ = (q: Question) => String(q.type) === 'file_multi'
 
 export const DynamicStep: FC = () => {
@@ -60,7 +60,12 @@ export const DynamicStep: FC = () => {
 		(value === true || value === 'true')
 
 	return (
-		<Stack gap='md' w='min(92vw, 840px)' mx='auto' my='xl'>
+		<Stack   gap="md"
+						 w="min(92vw, 840px)"
+						 mx="auto"
+						 my="xl"
+						 align="center"
+						 style={{ textAlign: 'center' }}>
 			<Title order={2}>{step.title}</Title>
 			<Text size='md'>— {getQText(currentQ)}</Text>
 
@@ -87,10 +92,13 @@ export const DynamicStep: FC = () => {
 			{isYesNo(currentQ) &&
 				currentQ.code !== 'q_who_fills' &&
 				currentQ.code !== 'q_other_funds_active' && (
-					<Group gap='sm'>
+					<Group w="100%"
+								 maw={470}
+								 justify="center"
+								 gap="md"
+								 wrap="nowrap" >
 						{currentQ.code === 'q_tsr_certificate_has' ? (
 							<>
-								{/* На "Да" не уходим со шага: показываем ниже блок с 3 полями */}
 								<ButtonUI label='Да' onClick={() => setVal(true)} />
 								<ButtonUI
 									label='Нет'
@@ -115,7 +123,7 @@ export const DynamicStep: FC = () => {
 				)}
 
 			{isCertYes && (
-				<Stack gap='sm'>
+				<Stack gap='sm'  align="center"  w="100%" maw={840}>
 					<TextInputUI
 						label='Номер сертификата ТСР'
 						value={String(
@@ -176,7 +184,11 @@ export const DynamicStep: FC = () => {
 
 			{currentQ.code === 'q_other_funds_active' && (
 				<Stack gap='sm'>
-					<Group gap='sm'>
+					<Group  w="100%"
+									maw={470}
+									justify="center"
+									gap="md"
+									wrap="nowrap">
 						<ButtonUI label='Да' onClick={() => setVal(true)} />
 						<ButtonUI
 							label='Нет'
@@ -217,7 +229,11 @@ export const DynamicStep: FC = () => {
 
 			{isSelect(currentQ) && currentQ.code !== 'q_who_fills' && (
 				<Stack gap='xs'>
-					<Group gap='sm'>
+					<Group  w="100%"
+									maw={470}
+									justify="center"
+									gap="md"
+									wrap="nowrap">
 						{getOptions(currentQ).map((opt) => (
 							<ButtonUI
 								key={String(opt.value)}
@@ -235,9 +251,8 @@ export const DynamicStep: FC = () => {
 			)}
 
 			{isText(currentQ) && (
-				<Stack gap='sm'>
+				<Stack gap='sm' align="center"  w="100%" maw={840}>
 					<TextInputUI
-						label={getQText(currentQ)}
 						value={String(value ?? '')}
 						onChange={(e) =>
 							setVal((e.currentTarget as HTMLInputElement).value)
@@ -253,9 +268,8 @@ export const DynamicStep: FC = () => {
 			)}
 
 			{isPhone(currentQ) && (
-				<Stack gap='sm'>
+				<Stack gap='sm' align="center"  w="100%" maw={840}>
 					<TextInputUI
-						label={getQText(currentQ)}
 						placeholder='+7XXXXXXXXXX'
 						value={String(value ?? '')}
 						onChange={(e) =>
@@ -273,9 +287,8 @@ export const DynamicStep: FC = () => {
 			)}
 
 			{isEmailQ(currentQ) && (
-				<Stack gap='sm'>
+				<Stack gap='sm'  align="center"  w="100%" maw={840}>
 					<TextInputUI
-						label={getQText(currentQ)}
 						placeholder='Введите email'
 						type='email'
 						value={String(value ?? '')}
@@ -293,9 +306,8 @@ export const DynamicStep: FC = () => {
 			)}
 
 			{isDate(currentQ) && (
-				<Stack gap='sm'>
+				<Stack gap='sm'  align="center"  w="100%" maw={840}>
 					<TextInputUI
-						label={getQText(currentQ)}
 						placeholder='ГГГГ-ММ-ДД'
 						value={String(value ?? '')}
 						onChange={(e) =>
@@ -314,7 +326,11 @@ export const DynamicStep: FC = () => {
 
 			{currentQ.code === 'q_need_consulting' && (
 				<Stack gap='xs'>
-					<Group gap='sm'>
+					<Group  w="100%"
+									maw={470}
+									justify="center"
+									gap="md"
+									wrap="nowrap">
 						{NEED_CONSULTING_OPTIONS.map((opt) => (
 							<ButtonUI
 								key={opt.value}
@@ -332,9 +348,8 @@ export const DynamicStep: FC = () => {
 			)}
 
 			{isTextarea(currentQ) && currentQ.code !== 'q_need_consulting' && (
-				<Stack gap='sm'>
-					<Textarea
-						label={getQText(currentQ)}
+				<Stack gap='sm' align="center" w="100%" maw={840}>
+					<TextAreaUI
 						autosize
 						minRows={3}
 						value={String(value ?? '')}

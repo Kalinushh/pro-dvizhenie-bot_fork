@@ -9,7 +9,8 @@ import {
 import type { Step } from '../../shared/lib/types'
 import { DynamicStep } from '../../features/dynamicStep/dynamicStep'
 import { StepFinish } from '../../features/StepFinish'
-
+import { Center } from '@mantine/core'
+import { LogoUI } from '../../shared/ui/logo/logoUI'
 export const StepPage = () => {
 	const dispatch = useAppDispatch()
 	const step = useAppSelector(selectStep)
@@ -30,5 +31,12 @@ export const StepPage = () => {
 	}, [step])
 
 	if (isFinished) return <StepFinish />
-	return <DynamicStep />
+	return (
+		<>
+		<LogoUI />
+		<Center style={{ height: '100vh' }}>
+			{isFinished ? <StepFinish /> : <DynamicStep />}
+		</Center>
+		</>
+	)
 }
