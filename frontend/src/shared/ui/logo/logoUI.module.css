@@ -1,2 +1,16 @@
+.logo {
+    position: fixed;
+    top: 48px;
+    left: 60px;
+    z-index: 1000;
+    margin: 0;
+    cursor: pointer;
+}
 
-
+@media (max-width: 768px) {
+    .logo {
+        top: 16px;
+        left: 16px;
+        width: 160px;
+    }
+}

@@ -1,14 +1,20 @@
-import type { FC } from 'react'
-import { Button, type ButtonProps } from '@mantine/core'
+import type { FC, ReactNode, MouseEventHandler } from 'react'
+import { Button } from '@mantine/core'
+import type { ButtonProps } from '@mantine/core'
 
-type Props = ButtonProps
+interface ButtonUIProps extends Omit<ButtonProps, 'children'> {
+	label: ReactNode
+	onClick?: MouseEventHandler<HTMLButtonElement>
+}
 
-export const ButtonUI: FC<Props> = ({
+export const ButtonUI: FC<ButtonUIProps> = ({
+	label,
 	variant = 'filled',
 	color = 'indigo',
 	size = 'md',
 	radius = 'xl',
 	style,
+	onClick,
 	...props
 }) => {
 	return (
@@ -21,9 +27,13 @@ export const ButtonUI: FC<Props> = ({
 				maxWidth: 235,
 				width: '100%',
 				height: 48,
+				marginTop:68,
 				...style,
 			}}
+			onClick={onClick}
 			{...props}
-		/>
+		>
+			{label}
+		</Button>
 	)
 }
