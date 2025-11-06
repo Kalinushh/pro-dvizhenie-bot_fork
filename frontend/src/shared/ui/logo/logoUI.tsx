@@ -1,8 +1,9 @@
 import React from 'react'
-
+import styles from './logoUI.module.css'
 export const LogoUI: React.FC = () => {
 	return (
 		<svg
+			className={styles.logo}
 			xmlns='http://www.w3.org/2000/svg'
 			width='235'
 			height='67'
